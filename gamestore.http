@@ -9,20 +9,22 @@ Content-Type: application/json
 
 {
   "name": "Minecraft",
-  "genre": "Kids and Family",
+  "genreId": "5299de81-95fe-47b9-8db1-05f4ad52f698",
   "price": 19.99,
-  "releaseDate": "2011-11-18"
+  "releaseDate": "2011-11-18",
+  "description": "Survive the night or create a work of art in the hit sandbox game! Build anything you can imagine, uncover mysteries, and face thrilling foes in an infinite world that's unique in every playthrough. There's no wrong way to play!"
 }
 
 ###
-PUT https://localhost:7077/games/0193379b-ecb6-7a0e-9e62-f0648e3e72ca
+PUT https://localhost:7077/games/01933c47-ce1f-7958-8a32-75cc74414e60
 Content-Type: application/json
 
 {
-  "name": "Street Fighter II Turbo",
-  "genre": "Fighting",
-  "price": 9.99,
-  "releaseDate": "1992-07-15"
+  "name": "Stree Fighter II Turbo",
+    "genreId": "4e179397-c3f1-45ec-a271-c26f07ff64f3",
+    "price": 9.99,
+    "releaseDate": "1992-07-15",
+    "description": "Street Fighter 2, the most iconic fighting game of all time, is back on the Nintendo Switch! The newest iteration of SFII in nearly 10 years, Ultra Street Fighter 2 features all of the classic characters, a host of new single player and multiplayer features, as well as two new fighters: Evil Ryu and Violent Ken!"
 }
 
 ###
