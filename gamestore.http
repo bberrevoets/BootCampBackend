@@ -1,4 +1,4 @@
-GET http://localhost:5082 
+GET https://localhost:7077/games
 
 ###
-GET https://localhost:7077
+GET https://localhost:7077/games/0193376e-7722-7990-b534-c38a1bbb1ae4
