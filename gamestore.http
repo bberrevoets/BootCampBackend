@@ -1,7 +1,7 @@
 GET https://localhost:7077/games
 
 ###
-GET https://localhost:7077/games/01933c1b-2313-7efa-b0bd-c325e3bd3f9b
+GET https://localhost:7077/games/01933c30-2194-74c4-9df3-17afa66280d4
 
 ###
 POST https://localhost:7077/games
@@ -27,3 +27,6 @@ Content-Type: application/json
 
 ###
 DELETE https://localhost:7077/games/019337a2-c97b-7239-ac1d-3c58293a1685
+
+###
+GET https://localhost:7077/genres
