@@ -1,4 +1,29 @@
 GET https://localhost:7077/games
 
 ###
-GET https://localhost:7077/games/0193376e-7722-7990-b534-c38a1bbb1ae4
+GET https://localhost:7077/games/0193379b-ecb6-7a0e-9e62-f0648e3e72ca
+
+###
+POST https://localhost:7077/games
+Content-Type: application/json
+
+{
+  "name": "Minecraft",
+  "genre": "Kids and Family",
+  "price": 19.99,
+  "releaseDate": "2011-11-18"
+}
+
+###
+PUT https://localhost:7077/games/0193379b-ecb6-7a0e-9e62-f0648e3e72ca
+Content-Type: application/json
+
+{
+  "name": "Street Fighter II Turbo",
+  "genre": "Fighting",
+  "price": 9.99,
+  "releaseDate": "1992-07-15"
+}
+
+###
+DELETE https://localhost:7077/games/019337a2-c97b-7239-ac1d-3c58293a1685

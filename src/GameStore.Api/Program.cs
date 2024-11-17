@@ -1,8 +1,8 @@
-using GameStore.Api.Models;
-
 var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
+
+const string getGameEndpointName = "GetGame";
 
 List<Game> games =
 [
@@ -37,7 +37,45 @@ app.MapGet("/games", () => games);
 app.MapGet("/games/{id:guid}", (Guid id) =>
 {
     var game = games.Find(g => g.Id == id);
+    
     return game is null ? Results.NotFound() : Results.Ok(game);
+    
+}).WithName(getGameEndpointName);
+
+app.MapPost("/games", (Game game) =>
+{
+    game.Id = Guid.CreateVersion7();
+    
+    games.Add(game);
+
+    return Results.CreatedAtRoute(getGameEndpointName, new { id = game.Id }, game);
+    
+}).WithParameterValidation();
+
+app.MapPut("/games/{id:guid}", (Guid id, Game updatedGame) =>
+{
+    var existingGame = games.Find(g => g.Id == id);
+    
+    if (existingGame is null)
+    {
+        return Results.NotFound();
+    }
+
+    existingGame.Name        = updatedGame.Name;
+    existingGame.Genre       = updatedGame.Genre;
+    existingGame.Price       = updatedGame.Price;
+    existingGame.ReleaseDate = updatedGame.ReleaseDate;
+
+    return Results.NoContent();
+
+}).WithParameterValidation();
+
+app.MapDelete("/games/{id:guid}", (Guid id) =>
+{
+    games.RemoveAll(game => game.Id == id);
+
+    return Results.NoContent();
 });
+
 
 app.Run();
