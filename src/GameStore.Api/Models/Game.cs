@@ -2,7 +2,7 @@
 
 public class Game
 {
-    public Guid Id { get; init; }
+    public Guid Id { get; set; }
 
     public required string Name { get; set; }
 
