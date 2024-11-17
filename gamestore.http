@@ -1,7 +1,7 @@
 GET https://localhost:7077/games
 
 ###
-GET https://localhost:7077/games/0193379b-ecb6-7a0e-9e62-f0648e3e72ca
+GET https://localhost:7077/games/01933c1b-2313-7efa-b0bd-c325e3bd3f9b
 
 ###
 POST https://localhost:7077/games
