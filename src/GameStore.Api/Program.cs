@@ -18,4 +18,6 @@ app.MapGames();
 
 app.MapGenres();
 
+app.MigrateDb();
+
 app.Run();
