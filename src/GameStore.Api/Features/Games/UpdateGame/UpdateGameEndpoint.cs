@@ -6,7 +6,7 @@ public static class UpdateGameEndpoint
 {
     public static void MapUpdateGame(this IEndpointRouteBuilder app, GameStoreData data)
     {
-        app.MapPut("/games/{id:guid}", (Guid id, UpdateGameDto updatedGame) =>
+        app.MapPut("/{id:guid}", (Guid id, UpdateGameDto updatedGame) =>
         {
             var genre = data.GetGenre(updatedGame.GenreId);
 

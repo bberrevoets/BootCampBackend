@@ -1,5 +1,6 @@
 ﻿using GameStore.Api.Data;
 using GameStore.Api.Features.Games.Constants;
+using GameStore.Api.Models;
 
 namespace GameStore.Api.Features.Games.CreateGame;
 
@@ -7,7 +8,7 @@ public static class CreateGameEndpoint
 {
     public static void MapCreateGame(this IEndpointRouteBuilder app, GameStoreData data)
     {
-        app.MapPost("/games", (CreateGameDto createGameDto) =>
+        app.MapPost("/", (CreateGameDto createGameDto) =>
         {
             var genre = data.GetGenre(createGameDto.GenreId);
 

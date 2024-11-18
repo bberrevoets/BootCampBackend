@@ -1,4 +1,6 @@
-﻿namespace GameStore.Api.Data;
+﻿using GameStore.Api.Models;
+
+namespace GameStore.Api.Data;
 
 public class GameStoreData
 {
