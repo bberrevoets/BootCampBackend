@@ -2,6 +2,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using GameStore.Api.Data;
+using GameStore.Api.Features.Games.GetGames;
 
 #endregion
 
@@ -13,9 +14,7 @@ const string getGameEndpointName = "GetGame";
 
 GameStoreData data = new();
 
-app.MapGet("/games",
-    () => data.GetGames().Select(game => new GameSummeryDto(game.Id, game.Name, game.Genre.Name, game.Price,
-        game.ReleaseDate)));
+app.MapGetGames(data);
 
 app.MapGet("/games/{id:guid}", (Guid id) =>
 {
@@ -85,8 +84,6 @@ public record GameDetailsDto(
     decimal Price,
     DateOnly ReleaseDate,
     string Description);
-
-public record GameSummeryDto(Guid Id, string Name, string Genre, decimal Price, DateOnly ReleaseDate);
 
 public record CreateGameDto(
     [Required] [StringLength(50)] string Name,
