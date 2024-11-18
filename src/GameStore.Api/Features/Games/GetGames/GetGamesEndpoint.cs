@@ -8,6 +8,6 @@ public static class GetGamesEndpoint
     {
         app.MapGet("/",
             (GameStoreData data) => data.GetGames().Select(game =>
-                new GameSummeryDto(game.Id, game.Name, game.Genre.Name, game.Price, game.ReleaseDate)));
+                new GameSummeryDto(game.Id, game.Name, game.Genre!.Name, game.Price, game.ReleaseDate)));
     }
 }
