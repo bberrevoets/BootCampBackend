@@ -7,19 +7,14 @@ public static class GetNameEndpoint
 {
     public static void MapGetGame(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/{id:guid}", (Guid id, GameStoreContext dbContext) =>
+        app.MapGet("/{id:guid}", async (Guid id, GameStoreContext dbContext) =>
         {
-            var findGameTask = dbContext.Games.FindAsync(id).AsTask();
+            var game = await dbContext.Games.FindAsync(id);
 
-            return findGameTask.ContinueWith(task =>
-            {
-                var game = task.Result;
-
-                return game is null
-                    ? Results.NotFound()
-                    : Results.Ok(new GameDetailsDto(game.Id, game.Name, game.GenreId, game.Price, game.ReleaseDate,
-                        game.Description));
-            });
+            return game is null
+                ? Results.NotFound()
+                : Results.Ok(new GameDetailsDto(game.Id, game.Name, game.GenreId, game.Price, game.ReleaseDate,
+                    game.Description));
         }).WithName(EndpointNames.GetGame);
     }
 }
