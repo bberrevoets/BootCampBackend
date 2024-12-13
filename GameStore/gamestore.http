@@ -8,7 +8,7 @@ POST https://localhost:7077/games
 Content-Type: application/json
 
 {
-  "name": "Minecraft",
+  "name": "Minecraft Bert",
   "genreId": "5299de81-95fe-47b9-8db1-05f4ad52f698",
   "price": 19.99,
   "releaseDate": "2011-11-18",
@@ -28,7 +28,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE https://localhost:7077/games/019337a2-c97b-7239-ac1d-3c58293a1685
+DELETE https://localhost:7077/games/458535d4-c936-49c9-84c4-79438ce759d0
 
 ###
 GET https://localhost:7077/genres

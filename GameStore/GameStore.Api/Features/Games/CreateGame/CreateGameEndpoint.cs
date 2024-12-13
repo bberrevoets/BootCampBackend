@@ -8,23 +8,28 @@ public static class CreateGameEndpoint
 {
     public static void MapCreateGame(this IEndpointRouteBuilder app)
     {
-        app.MapPost("/", async (CreateGameDto createGameDto, GameStoreContext dbContext) =>
-        {
-            var game = new Game
+        app.MapPost("/",
+            async (CreateGameDto createGameDto, GameStoreContext dbContext, ILoggerFactory loggerFactory) =>
             {
-                Name = createGameDto.Name,
-                GenreId = createGameDto.GenreId,
-                Price = createGameDto.Price,
-                ReleaseDate = createGameDto.ReleaseDate,
-                Description = createGameDto.Description
-            };
+                var game = new Game
+                {
+                    Name = createGameDto.Name,
+                    GenreId = createGameDto.GenreId,
+                    Price = createGameDto.Price,
+                    ReleaseDate = createGameDto.ReleaseDate,
+                    Description = createGameDto.Description
+                };
 
-            dbContext.Games.Add(game);
-            
-            await dbContext.SaveChangesAsync();
+                dbContext.Games.Add(game);
 
-            return Results.CreatedAtRoute(EndpointNames.GetGame, new { id = game.Id },
-                new GameDetailsDto(game.Id, game.Name, game.GenreId, game.Price, game.ReleaseDate, game.Description));
-        }).WithParameterValidation();
+                await dbContext.SaveChangesAsync();
+
+                var logger = loggerFactory.CreateLogger("Games");
+                logger.LogInformation("Created game {GameName} with price {GamePrice}", game.Name, game.Price);
+
+                return Results.CreatedAtRoute(EndpointNames.GetGame, new { id = game.Id },
+                    new GameDetailsDto(game.Id, game.Name, game.GenreId, game.Price, game.ReleaseDate,
+                        game.Description));
+            }).WithParameterValidation();
     }
 }

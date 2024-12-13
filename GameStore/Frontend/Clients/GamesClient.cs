@@ -7,7 +7,7 @@ public class GamesClient(HttpClient httpClient)
     private readonly List<string> defaultDetail = ["Unknown error."];
 
     public async Task<GameSummary[]> GetGamesAsync()
-        => await httpClient.GetFromJsonAsync<GameSummary[]>($"games") ?? [];
+        => await httpClient.GetFromJsonAsync<GameSummary[]>("games") ?? [];
 
     public async Task<CommandResult> AddGameAsync(GameDetails game)
     {
