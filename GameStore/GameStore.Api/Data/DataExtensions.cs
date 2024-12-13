@@ -5,27 +5,27 @@ namespace GameStore.Api.Data;
 
 public static class DataExtensions
 {
-    public static void InitializeDb(this WebApplication app)
+    public static async Task InitializeDbAsync(this WebApplication app)
     {
-        app.MigrateDb();
-        app.SeedDb();
+        await app.MigrateDbAsync();
+        await app.SeedDbAsync();
     }
 
-    private static void MigrateDb(this WebApplication app)
+    private static async Task MigrateDbAsync(this WebApplication app)
     {
         if (!app.Environment.IsDevelopment()) return;
 
         using var scope = app.Services.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<GameStoreContext>();
-        context.Database.Migrate();
+        await context.Database.MigrateAsync();
     }
 
-    private static void SeedDb(this WebApplication app)
+    private static async Task SeedDbAsync(this WebApplication app)
     {
         using var scope = app.Services.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<GameStoreContext>();
 
-        if (dbContext.Genres.Any()) return;
+        if (await dbContext.Genres.AnyAsync()) return;
 
         dbContext.Genres.AddRange(
             new Genre { Id = new Guid("3a2f2abc-3a4a-4e1a-b838-8c52590f67e5"), Name = "Fighting" },
@@ -34,14 +34,14 @@ public static class DataExtensions
             new Genre { Id = new Guid("62998639-ff87-4399-85d1-942bfde92e02"), Name = "Roleplaying" },
             new Genre { Id = new Guid("20ee5594-ba79-4a54-922b-ddb59c233aca"), Name = "Sports" }
         );
-        dbContext.SaveChanges();
+        await dbContext.SaveChangesAsync();
 
-        dbContext.Games.AddRange(
+        await dbContext.Games.AddRangeAsync(
             new Game
             {
                 Id = new Guid("19ed119b-4e7c-4f13-906a-adc4ba3bf1c7"),
                 Name = "Final Fantasy XIV",
-                Genre = dbContext.Genres.Find(new Guid("62998639-ff87-4399-85d1-942bfde92e02")),
+                Genre = await dbContext.Genres.FindAsync(new Guid("62998639-ff87-4399-85d1-942bfde92e02")),
                 GenreId = new Guid("62998639-ff87-4399-85d1-942bfde92e02"),
                 Price = 59.99m,
                 ReleaseDate = new DateOnly(2010, 09, 30),
@@ -52,7 +52,7 @@ public static class DataExtensions
             {
                 Id = new Guid("F9F676A0-9F44-49C4-9492-323CC44B4112"),
                 Name = "Minecraft",
-                Genre = dbContext.Genres.Find(new Guid("5299DE81-95FE-47B9-8DB1-05F4AD52F698")),
+                Genre = await dbContext.Genres.FindAsync(new Guid("5299DE81-95FE-47B9-8DB1-05F4AD52F698")),
                 GenreId = new Guid("5299DE81-95FE-47B9-8DB1-05F4AD52F698"),
                 Price = 19.99m,
                 ReleaseDate = new DateOnly(2011, 11, 18),
@@ -63,7 +63,7 @@ public static class DataExtensions
             {
                 Id = new Guid("be3decbd-0592-4fb4-ae9c-90f531a4b1fd"),
                 Name = "FIFA 23",
-                Genre = dbContext.Genres.Find(new Guid("20ee5594-ba79-4a54-922b-ddb59c233aca")),
+                Genre = await dbContext.Genres.FindAsync(new Guid("20ee5594-ba79-4a54-922b-ddb59c233aca")),
                 GenreId = new Guid("20ee5594-ba79-4a54-922b-ddb59c233aca"),
                 Price = 69.99m,
                 ReleaseDate = new DateOnly(2022, 09, 27),
@@ -74,7 +74,7 @@ public static class DataExtensions
             {
                 Id = new Guid("beb11f42-ca86-40a2-928e-35ed3ba42e68"),
                 Name = "Street Fighter II",
-                Genre = dbContext.Genres.Find(new Guid("3a2f2abc-3a4a-4e1a-b838-8c52590f67e5")),
+                Genre = await dbContext.Genres.FindAsync(new Guid("3a2f2abc-3a4a-4e1a-b838-8c52590f67e5")),
                 GenreId = new Guid("3a2f2abc-3a4a-4e1a-b838-8c52590f67e5"),
                 Price = 19.99m,
                 ReleaseDate = new DateOnly(1992, 07, 15),
@@ -83,6 +83,6 @@ public static class DataExtensions
             }
         );
 
-        dbContext.SaveChanges();
+        await dbContext.SaveChangesAsync();
     }
 }

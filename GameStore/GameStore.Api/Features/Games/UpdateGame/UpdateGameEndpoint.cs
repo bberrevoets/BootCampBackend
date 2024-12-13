@@ -6,9 +6,9 @@ public static class UpdateGameEndpoint
 {
     public static void MapUpdateGame(this IEndpointRouteBuilder app)
     {
-        app.MapPut("/{id:guid}", (Guid id, UpdateGameDto updatedGame, GameStoreContext dbContext) =>
+        app.MapPut("/{id:guid}", async (Guid id, UpdateGameDto updatedGame, GameStoreContext dbContext) =>
         {
-            var existingGame = dbContext.Games.Find(id);
+            var existingGame = await dbContext.Games.FindAsync(id);
             
             if (existingGame is null) return Results.NotFound();
 
@@ -18,7 +18,7 @@ public static class UpdateGameEndpoint
             existingGame.ReleaseDate = updatedGame.ReleaseDate;
             existingGame.Description = updatedGame.Description;
 
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
 
             return Results.NoContent();
         }).WithParameterValidation();

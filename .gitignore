@@ -364,3 +364,6 @@ FodyWeavers.xsd
 /src/GameStore.Api/GameStore.db
 /src/GameStore.Api/GameStore.db-shm
 /src/GameStore.Api/GameStore.db-wal
+/GameStore/GameStore.Api/GameStore.db-shm
+/GameStore/GameStore.Api/GameStore.db-wal
+/GameStore/GameStore.Api/GameStore.db

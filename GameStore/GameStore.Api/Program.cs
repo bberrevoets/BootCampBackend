@@ -14,6 +14,6 @@ app.MapGames();
 
 app.MapGenres();
 
-app.InitializeDb();
+await app.InitializeDbAsync();
 
 app.Run();
