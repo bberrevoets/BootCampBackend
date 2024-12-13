@@ -6,7 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "__Solution Items__", "__Solution Items__", "{106D2039-0B94-478E-ADE0-6BFE6E440C46}"
 	ProjectSection(SolutionItems) = preProject
 		gamestore.http = gamestore.http
-		README.md = README.md
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{D333BEC7-E69B-4DC7-A338-454240B627A4}"
