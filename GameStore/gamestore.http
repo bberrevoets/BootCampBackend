@@ -1,4 +1,4 @@
-GET https://localhost:7077/games
+GET https://localhost:7077/games?pageNumber=1&pageSize=3
 
 ###
 GET https://localhost:7077/games/be3decbd-0592-4fb4-ae9c-90f531a4b1fd
