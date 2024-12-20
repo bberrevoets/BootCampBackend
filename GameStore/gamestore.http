@@ -1,4 +1,4 @@
-GET https://localhost:7077/games?pageSize=3&pageNumber=2
+GET https://localhost:7077/games?pageNumber=1&pageSize=3&name=Street
 
 ###
 GET https://localhost:7077/games/be3decbd-0592-4fb4-ae9c-90f531a4b1fd

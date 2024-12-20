@@ -13,19 +13,26 @@ public static class GetGamesEndpoint
         {
             var skipCount = (request.PageNumber - 1) * request.PageSize;
 
-            var gamesOnPage = await dbContext.Games
+            var filteredGames = dbContext.Games
+                .Where(game => string.IsNullOrWhiteSpace(request.Name)
+                               || game.Name.Contains(request.Name));
+
+            var gamesOnPage = await filteredGames
                 .OrderBy(game => game.Name)
                 .Skip(skipCount)
                 .Take(request.PageSize)
                 .Include(game => game.Genre)
-                .Select(game => new GameSummeryDto(
+                .Select(game => new GameSummaryDto(
                     game.Id,
                     game.Name,
                     game.Genre!.Name,
                     game.Price,
-                    game.ReleaseDate))
-                .AsNoTracking().ToListAsync();
-            var totalGames = await dbContext.Games.CountAsync();
+                    game.ReleaseDate
+                ))
+                .AsNoTracking()
+                .ToListAsync();
+
+            var totalGames = await filteredGames.CountAsync();
             var totalPages = (int)Math.Ceiling(totalGames / (double)request.PageSize);
 
             return new GamesPageDto(totalPages, gamesOnPage);
