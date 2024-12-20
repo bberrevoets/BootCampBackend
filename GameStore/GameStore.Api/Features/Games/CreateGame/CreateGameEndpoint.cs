@@ -6,9 +6,9 @@ namespace GameStore.Api.Features.Games.CreateGame;
 
 public static class CreateGameEndpoint
 {
-    public static void MapCreateGame(this IEndpointRouteBuilder app)
+    public static RouteHandlerBuilder MapCreateGame(this IEndpointRouteBuilder app)
     {
-        app.MapPost("/",
+        return app.MapPost("/",
             async (CreateGameDto createGameDto, GameStoreContext dbContext, ILogger<Program> logger) =>
             {
                 var game = new Game

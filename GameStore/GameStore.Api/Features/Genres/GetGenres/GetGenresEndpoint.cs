@@ -1,4 +1,5 @@
 ﻿using GameStore.Api.Data;
+using GameStore.Api.Features.Games.Constants;
 using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.Api.Features.Genres.GetGenres;

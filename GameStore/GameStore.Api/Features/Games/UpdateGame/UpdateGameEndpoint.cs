@@ -4,9 +4,9 @@ namespace GameStore.Api.Features.Games.UpdateGame;
 
 public static class UpdateGameEndpoint
 {
-    public static void MapUpdateGame(this IEndpointRouteBuilder app)
+    public static RouteHandlerBuilder MapUpdateGame(this IEndpointRouteBuilder app)
     {
-        app.MapPut("/{id:guid}", async (Guid id, UpdateGameDto updatedGame, GameStoreContext dbContext) =>
+        return app.MapPut("/{id:guid}", async (Guid id, UpdateGameDto updatedGame, GameStoreContext dbContext) =>
         {
             var existingGame = await dbContext.Games.FindAsync(id);
             
