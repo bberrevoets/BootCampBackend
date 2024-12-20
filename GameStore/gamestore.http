@@ -1,10 +1,10 @@
-GET https://localhost:7077/games?pageNumber=1&pageSize=3&name=street
+GET http://localhost:5082/games?pageNumber=1&pageSize=3&name=street
 
 ###
-GET https://localhost:7077/games/be3decbd-0592-4fb4-ae9c-90f531a4b1fd
+GET http://localhost:5082/games/be3decbd-0592-4fb4-ae9c-90f531a4b1fd
 
 ###
-POST https://localhost:7077/games
+POST http://localhost:5082/games
 Content-Type: application/json
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ###
-PUT https://localhost:7077/games/01933c47-ce1f-7958-8a32-75cc74414e60
+PUT http://localhost:5082/games/01933c47-ce1f-7958-8a32-75cc74414e60
 Content-Type: application/json
 
 {
@@ -28,7 +28,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE https://localhost:7077/games/5653974f-01b9-4097-b38f-46060996b684
+DELETE http://localhost:5082/games/5653974f-01b9-4097-b38f-46060996b684
 
 ###
-GET https://localhost:7077/genres
+GET http://localhost:5082/genres
