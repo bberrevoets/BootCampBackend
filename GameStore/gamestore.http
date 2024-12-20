@@ -1,4 +1,4 @@
-GET https://localhost:7077/games?pageNumber=1&pageSize=5
+GET https://localhost:7077/games?pageSize=3&pageNumber=2
 
 ###
 GET https://localhost:7077/games/be3decbd-0592-4fb4-ae9c-90f531a4b1fd
@@ -8,10 +8,10 @@ POST https://localhost:7077/games
 Content-Type: application/json
 
 {
-  "name": "Minecraft Bert",
-  "genreId": "5299de81-95fe-47b9-8db1-05f4ad52f698",
-  "price": 19.99,
-  "releaseDate": "2011-11-18",
+  "name": "Elden Ring",
+  "genreId": "62998639-ff87-4399-85d1-942bfde92e02",
+  "price": 49.99,
+  "releaseDate": "2022-02-25",
   "description": "Survive the night or create a work of art in the hit sandbox game! Build anything you can imagine, uncover mysteries, and face thrilling foes in an infinite world that's unique in every playthrough. There's no wrong way to play!"
 }
 
