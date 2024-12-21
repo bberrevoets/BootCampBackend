@@ -7,7 +7,11 @@ public record CreateGameDto(
     Guid GenreId,
     [Range(1, 100)] decimal Price,
     DateOnly ReleaseDate,
-    [Required] [StringLength(500)] string Description);
+    [Required] [StringLength(500)] string Description
+)
+{
+    public IFormFile? ImageFile { get; set; }
+}
 
 public record GameDetailsDto(
     Guid Id,
@@ -15,4 +19,5 @@ public record GameDetailsDto(
     Guid GenreId,
     decimal Price,
     DateOnly ReleaseDate,
-    string Description);
+    string Description,
+    string ImageUri);
