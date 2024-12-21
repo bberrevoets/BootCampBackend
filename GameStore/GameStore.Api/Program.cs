@@ -53,15 +53,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "GameStore API V1");
-        options.RoutePrefix = string.Empty; 
+        options.RoutePrefix = string.Empty;
         options.DefaultModelsExpandDepth(-1);
     });
 }
 
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler();
-}
+if (!app.Environment.IsDevelopment()) app.UseExceptionHandler();
 
 app.UseStatusCodePages();
 

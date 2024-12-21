@@ -9,19 +9,13 @@
 }
 
 .card-img-top {
-    width: 100%; /* Full width of the container */
-    height: auto; /* Maintain aspect ratio */
     display: block; /* Removes any extra space below the image */
+    height: auto; /* Maintain aspect ratio */
+    width: 100%; /* Full width of the container */
 }
 
-.card .card-title {
-	transition: color 0.2s ease-in-out;
-}
+.card .card-title { transition: color 0.2s ease-in-out; }
 
-.card .card-title:hover {
-	color: #5f4dee;
-}
+.card .card-title:hover { color: #5f4dee; }
 
-.card:hover {
-	box-shadow: 0 0 10px #5f4dee;
-}
+.card:hover { box-shadow: 0 0 10px #5f4dee; }

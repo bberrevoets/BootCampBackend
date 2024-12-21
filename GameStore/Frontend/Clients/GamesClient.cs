@@ -7,7 +7,9 @@ public class GamesClient(HttpClient httpClient)
     private readonly List<string> defaultDetail = ["Unknown error."];
 
     public async Task<GameSummary[]> GetGamesAsync()
-        => await httpClient.GetFromJsonAsync<GameSummary[]>("games") ?? [];
+    {
+        return await httpClient.GetFromJsonAsync<GameSummary[]>("games") ?? [];
+    }
 
     public async Task<CommandResult> AddGameAsync(GameDetails game)
     {
@@ -16,8 +18,10 @@ public class GamesClient(HttpClient httpClient)
     }
 
     public async Task<GameDetails> GetGameAsync(Guid id)
-        => await httpClient.GetFromJsonAsync<GameDetails>($"games/{id}")
-            ?? throw new Exception("Could not find game!");
+    {
+        return await httpClient.GetFromJsonAsync<GameDetails>($"games/{id}")
+               ?? throw new Exception("Could not find game!");
+    }
 
     public async Task<CommandResult> UpdateGameAsync(GameDetails updatedGame)
     {

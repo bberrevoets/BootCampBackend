@@ -13,7 +13,8 @@ public static class DeleteGameEndpoint
                 await dbContext.Games.Where(game => game.Id == id).ExecuteDeleteAsync();
 
                 return Results.NoContent();
-            });
+            })
+            .WithName(EndpointNames.DeleteGame);
         ;
     }
 }

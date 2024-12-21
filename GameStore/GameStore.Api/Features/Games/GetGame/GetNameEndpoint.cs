@@ -15,6 +15,7 @@ public static class GetNameEndpoint
                     ? Results.NotFound()
                     : Results.Ok(new GameDetailsDto(game.Id, game.Name, game.GenreId, game.Price, game.ReleaseDate,
                         game.Description));
-            }); // Documents potential error responses
+            })
+            .WithName(EndpointNames.GetGame);
     }
 }
