@@ -36,6 +36,7 @@ public static class UpdateGameEndpoint
 
                     return Results.NoContent();
                 }).WithParameterValidation()
-            .WithName(EndpointNames.UpdateGame);
+            .WithName(EndpointNames.UpdateGame)
+            .DisableAntiforgery();
     }
 }
