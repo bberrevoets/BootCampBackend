@@ -46,6 +46,8 @@ builder.Services.AddHttpContextAccessor()
 
 var app = builder.Build();
 
+app.UseStaticFiles();
+
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = ForwardedHeaders.All

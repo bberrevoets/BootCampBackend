@@ -16,4 +16,8 @@ public class GameDetails
     public DateOnly ReleaseDate { get; set; }
 
     [Required] [StringLength(500)] public required string Description { get; set; }
+
+    public IFormFile? ImageFile { get; set; }
+
+    public string? ImageUri { get; set; }
 }

@@ -6,7 +6,7 @@ namespace GameStore.Frontend.Clients;
 
 public static class HttpResponseMessageExtensions
 {
-    private static readonly List<string> defaultDetail = ["Unknown error."];
+    private static readonly List<string> DefaultDetail = ["Unknown error."];
 
     public static async Task<CommandResult> HandleAsync(this HttpResponseMessage response)
     {
@@ -15,7 +15,7 @@ public static class HttpResponseMessageExtensions
         // Get as many error details as possible
         var responseContent = await response.Content.ReadAsStringAsync();
 
-        if (string.IsNullOrEmpty(responseContent)) return new CommandResult(false) { Errors = defaultDetail };
+        if (string.IsNullOrEmpty(responseContent)) return new CommandResult(false) { Errors = DefaultDetail };
 
         if (response.Content.Headers.ContentType?.MediaType != "application/problem+json")
             return new CommandResult(false) { Errors = [responseContent] };
@@ -36,6 +36,6 @@ public static class HttpResponseMessageExtensions
                         .Where(e => !string.IsNullOrEmpty(e)));
 
         // return the error list
-        return new CommandResult(false) { Errors = errors.Count == 0 ? defaultDetail : errors };
+        return new CommandResult(false) { Errors = errors.Count == 0 ? DefaultDetail : errors };
     }
 }
